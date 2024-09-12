@@ -1,0 +1,22 @@
+.coordinate-table {
+  width: 70%;               /* Make the table occupy full width of its container */
+  border-collapse: collapse; /* Remove space between cells */
+}
+
+.caption {
+  text-align: left;  /* Align captions to the left */
+  padding: 10px;     /* Add padding for spacing */
+}
+
+.controls {
+  text-align: right; /* Align controls (buttons and values) to the right */
+  padding: 10px;     /* Add padding for spacing */
+}
+
+.update {
+  padding: 5px 5px;
+}
+
+button {
+  margin: 0 5px; /* Add some margin between buttons for better spacing */
+}

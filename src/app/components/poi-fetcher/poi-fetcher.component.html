@@ -1,0 +1,51 @@
+<div>
+    <h1>Points of Interest</h1>
+
+    <table class="coordinate-table">
+      <tr>
+        <td class="caption"><strong>Latitude:</strong></td>
+        <td class="controls">
+          <button (click)="adjustLatitude(-0.01)">Decrease</button>
+          {{ currentLatitude() | number: '1.2-2' }}
+          <button (click)="adjustLatitude(0.01)">Increase</button>
+        </td>
+      </tr>
+      <tr>
+        <td class="caption"><strong>Longitude:</strong></td>
+        <td class="controls">
+          <button (click)="adjustLongitude(-0.01)">Decrease</button>
+          {{ currentLongitude() | number: '1.2-2' }}
+          <button (click)="adjustLongitude(0.01)">Increase</button>
+        </td>
+      </tr>
+    </table>
+    
+    @if (isShowUpdateButton()) {
+      <div class="update">
+        <button (click)="updatePOIs()">Update POIs</button>
+      </div>  
+    }
+
+    @if (isLoading()) {
+      <div class="caption">
+        Loading POIs...
+      </div>
+    }
+    
+    <ul>
+      @if (!isLoading() && pois().length > 0) {
+        <ng-container>
+          @for (poi of pois(); track $index) {
+            @if (poi.name) {
+              <li>
+                <a [href]="poi.osm_url" target="_blank">{{ poi.name }}</a>
+              </li>
+            }
+          }
+        </ng-container>
+      }
+      @if (!isLoading() && pois().length === 0) {
+        <li>No Points of Interest found.</li>
+      }
+    </ul>
+</div>
